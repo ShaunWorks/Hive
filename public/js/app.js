@@ -1,23 +1,38 @@
-let chatBox = new Vue({
-    el: "#chat-box",
-    data: {
-        message: "Nice Vue!"
-    }
-})
-
 Vue.component("list-item", {
     props: ['name'],
-    template: '<button v-on:click="sayHi" type="button" class="list-group-item list-group-item-action px-1">{{name}}</button>',
+    template: '<button v-on:click="changeHive" type="button" class="list-group-item list-group-item-action px-1">{{name}}</button>',
     methods: {
-        sayHi: function () {
-            chatBox.message = this.name;
+        changeHive: function () {
+            chatBox.title = this.name;
         }
     }
 })
 
-new Vue({
+let nav = new Vue({
     el: '#hive-nav',
     data: {
-        items: ["banana", "orange", "apple", "fdaff", "adfadf", "fdsfasf", "adfdafawf", "dfaf", "Fsdfasfd", "daffafd", "fadsffa", "fadfdf", "fadsfafdaf", "dVvvcvzv"]
+        query: "",
+        items: ["banana", "orange", "apple"]
+    },
+    methods: {
+        addHive: function () {
+            this.items.push(this.query);
+            this.query = "";
+        }
+    }
+})
+
+let chatBox = new Vue({
+    el: "#chat-box",
+    data: {
+        title: "Nice Vue!",
+        message: "",
+        chat: ["", "jkldfja"]
+    },
+    methods: {
+        postMessage: function () {
+            this.chat.push(this.message);
+            this.message = "";
+        }
     }
 })

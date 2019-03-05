@@ -21,5 +21,12 @@
 
 hr {
     background: rgb(36, 36, 36);
+}
+
+.ignore-parent {
     margin: -15px;
+}
+
+.chat-input {
+    background: rgb(27, 31, 31);
 }

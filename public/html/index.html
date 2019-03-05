@@ -18,32 +18,56 @@
 <body class="bg-secondary text-light">
     <div class="container-fluid">
         <div class="row">
-            <nav class="col-2 bg-dark sidebar">
+            <nav class="col-2 bg-dark sidebar" id="hive-nav">
                 <form class="my-2">
-                    <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-primary btn-sm btn-block my-2 text-center"
+                    <input v-model="query" class="form-control mr-2" type="search" placeholder="Search"
+                        aria-label="Search">
+                    <button v-on:click="addHive" class="btn btn-outline-primary btn-sm btn-block my-2 text-center"
                         type="submit">Search</button>
                 </form>
-                <hr class="my-2">
+                <hr class="my-2 ignore-parent">
 
                 <div class="sidebar-nav">
-                    <div class="list-group list-group-flush" id="hive-nav">
+                    <div class="list-group list-group-flush">
                         <button is="list-item" v-for="item in items" v-bind:name="item"></button>
                     </div>
                 </div>
             </nav>
             <main role="main" class="col-10 ml-auto px-5 py-5" id="chat-box">
-                <h1 id="main-title">{{message}}</h1>
-                <div class="jumbotron bg-dark">
-                    <h1 class="display-4">Hello, world!</h1>
-                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra
-                        attention to featured content or information.</p>
-                    <hr class="my-4">
-                    <p>It uses utility classes for typography and spacing to space content out within the larger
-                        container.</p>
-                    <p class="lead">
-                        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-                    </p>
+                <h1 id="main-title">{{title}}</h1>
+                <div class="jumbotron bg-dark p-0">
+                    <div class="jumbotron rounded-top bg-dark my-0 p-1" style="height: 300px; overflow: scroll;">
+                        <p v-for="post in chat">{{post}}</p>
+                        <!-- <div class="card text-white bg-primary" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
+                        </div>
+
+                        <div class="card text-white bg-primary" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
+                        </div>
+
+                        <div class="card text-white bg-primary" style="max-width: 18rem;">
+                            <div class="card-body">
+                                <p class="card-text">Some quick example text to build on the card title and make up the
+                                    bulk of the card's content.</p>
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <div class="chat-input py-3">
+                        <hr class="my-0">
+                        <form class="form-inline d-flex justify-content-end">
+                            <input v-model="message" class="form-control" type="input" placeholder="type a message..."
+                                aria-label="message">
+                            <button v-on:click="postMessage" class="btn btn-outline-light mx-2 text-center" type="submit">post</button>
+                        </form>
+                    </div>
                 </div>
             </main>
         </div>

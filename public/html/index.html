@@ -27,7 +27,7 @@
                 </form>
                 <hr class="my-2 ignore-parent">
 
-                <div class="sidebar-nav">
+                <div class="sidebar-nav" id="hive-list">
                     <div class="list-group list-group-flush">
                         <button is="list-item" v-for="item in items" v-bind:name="item"></button>
                     </div>
@@ -36,7 +36,7 @@
             <main role="main" class="col-10 ml-auto px-5 py-5" id="chat-box">
                 <h1 id="main-title">{{title}}</h1>
                 <div class="jumbotron bg-dark p-0">
-                    <div class="jumbotron rounded-top bg-dark my-0 p-1" style="height: 300px; overflow: scroll;">
+                    <div class="jumbotron rounded-top bg-dark my-0 p-1" style="height: 300px; overflow: scroll;" id="chat-area">
                         <p v-for="post in chat">{{post}}</p>
                         <!-- <div class="card text-white bg-primary" style="max-width: 18rem;">
                             <div class="card-body">

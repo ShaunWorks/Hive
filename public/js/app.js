@@ -18,6 +18,8 @@ let nav = new Vue({
         addHive: function () {
             this.items.push(this.query);
             this.query = "";
+            var objDiv = document.getElementById("hive-list");
+            objDiv.scrollTop = objDiv.scrollHeight;
         }
     }
 })
@@ -33,6 +35,8 @@ let chatBox = new Vue({
         postMessage: function () {
             this.chat.push(this.message);
             this.message = "";
+            var objDiv = document.getElementById("chat-area");
+            objDiv.scrollTop = objDiv.scrollHeight;
         }
     }
 })
